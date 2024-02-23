@@ -1,36 +1,19 @@
-import './style.css'
+import { Map, NavigationControl } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import maplibregl from 'maplibre-gl';
+import { PointOverLay, defaultPointOverlayerProps } from './layers/pointLayer';
+import './style.css';
 
-const map = new maplibregl.Map({
+// 创建底图
+const map = new Map({
     container: 'map',
-    style: {
-        version: 8,
-        sources: {
-            MIERUNEMAP: {
-                type: 'raster',
-                tiles: ['https://tile.mierune.co.jp/mierune_mono/{z}/{x}/{y}.png'],
-                tileSize: 256,
-                attribution:
-                    "Maptiles by <a href='http://mierune.co.jp/' target='_blank'>MIERUNE</a>, under CC BY. Data by <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors, under ODbL.",
-            },
-        },
-        layers: [
-            {
-                id: 'MIERUNEMAP',
-                type: 'raster',
-                source: 'MIERUNEMAP',
-                minzoom: 0,
-                maxzoom: 18,
-            },
-        ],
-    },
-    center: [139.767, 35.681],
-    zoom: 11,
+    style: 'https://maps.geoapify.com/v1/styles/maptiler-3d/style.json?apiKey=ed37e7dad41d49e097369eaeab9d71e1',
+    center: [113.29, 23.14],
+    zoom: 3,
 });
 
-map.addControl(
-    new maplibregl.NavigationControl({
-        visualizePitch: true,
-    })
-);
+// 添加 deck.gl 地图控制器
+
+map.addControl(new NavigationControl(), 'top-left')
+
+map.addControl(new PointOverLay(defaultPointOverlayerProps) as any)
+// map.addControl(new ZoomLevelControl(), 'bottom-left')

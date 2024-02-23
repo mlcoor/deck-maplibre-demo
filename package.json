@@ -1,6 +1,6 @@
 {
-  "name": "maplibregljs-starter",
-  "version": "4.0.0",
+  "name": "deck-maplibre-demo",
+  "version": "1.0.0",
   "description": "",
   "scripts": {
     "dev": "vite",
@@ -8,13 +8,15 @@
     "preview": "vite preview"
   },
   "keywords": [],
-  "author": "MapLibre User Group Japan",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.3.3",
-    "vite": "^5.1.1"
+    "vite": "^5.1.4"
   },
   "dependencies": {
-    "maplibre-gl": "^4.0.0"
+    "@deck.gl/core": "^8.9.34",
+    "@deck.gl/layers": "^8.9.34",
+    "@deck.gl/mapbox": "^8.9.34",
+    "maplibre-gl": "^4.0.2"
   }
 }
